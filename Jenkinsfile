@@ -3,7 +3,9 @@
 pipeline {
     agent any
 
-    stage('test'){
-        bat 'python setup.py'
+    stages {
+        stage('test'){
+            bat 'python setup.py'
+        }
     }
 }
