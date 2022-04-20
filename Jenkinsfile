@@ -7,7 +7,7 @@ pipeline {
         stage('test') {
             steps {
                 script {
-                    TEST = TEST_PSW
+                    env.TEST = TEST_PSW
                 }
                 bat 'python setup.py'
             }
