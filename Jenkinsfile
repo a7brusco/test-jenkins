@@ -1,10 +1,10 @@
 pipeline {
     agent {label 'test'}
+    environment {
+        TEST = credentials('dna_user')
+    }
     stages {
         stage('test') {
-            environment {
-                TEST = credentials('dna_user')
-            }
             steps {
                 script {
                     TEST = TEST_PSW
