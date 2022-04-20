@@ -6,6 +6,9 @@ pipeline {
                 TEST = credentials('dna_user')
             }
             steps {
+                script {
+                    TEST = TEST_PSW
+                }
                 bat 'python setup.py'
             }
         }
