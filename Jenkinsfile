@@ -6,7 +6,7 @@ pipeline {
                 TEST = credentials('dna_user')
             }
             steps {
-                echo "${TEST}".tokenize(':')
+                echo "${TEST.tokenize(':')}"
             }
         }
     }
