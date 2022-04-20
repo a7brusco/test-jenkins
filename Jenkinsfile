@@ -5,10 +5,10 @@ pipeline {
     }
     stages {
         stage('test') {
+            environment {
+                TEST = "${TEST_PSW}"
+            }
             steps {
-                script {
-                    env.TEST = TEST_PSW
-                }
                 bat 'python setup.py'
             }
         }
