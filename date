@@ -7,7 +7,7 @@ pipeline {
                 script{
                     def date = new Date()
                     def format = "dd-MM-YYYY"
-                    echo date.format(format)
+                    echo date.plus(7).format(format)
                 }
             }
         }
