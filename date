@@ -1,0 +1,15 @@
+import java.text.SimpleDateFormat
+pipeline {
+    agent {label 'test'}
+    stages {
+        stage('test'){
+            steps{
+                script{
+                    def date = new Date()
+                    def format = new SimpleDateFormat("dd-MM-YYYY")
+                }
+                echo format.format(date)
+            }
+        }
+    }
+}
