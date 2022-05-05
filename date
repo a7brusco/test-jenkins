@@ -6,9 +6,9 @@ pipeline {
             steps{
                 script{
                     def date = new Date()
-                    def format = new SimpleDateFormat("dd-MM-YYYY")
+                    def format = "dd-MM-YYYY"
                 }
-                echo format.format(date)
+                echo date.format(format)
             }
         }
     }
