@@ -7,9 +7,9 @@ pipeline {
                     def branches = [:]
                     for(int i=0; i<2; i++){
                         def index = i+1
-                        branches["generator${i}"] = {
+                        branches["test${i}"] = {
                             build   propagate: false,
-                                    job: 'generator',
+                                    job: 'test',
                                     parameters: [
                                         string(name: 'ID', value: "${index}"),
                                         ]
