@@ -20,7 +20,6 @@ pipeline {
                 }
                 else {
                     build   job: 'test',
-                            wait: false,
                             propagate: false,
                             parameters: [
                                 string(name: 'ID', value: String.valueOf(id+1))
