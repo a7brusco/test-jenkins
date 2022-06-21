@@ -11,8 +11,8 @@ pipeline {
                 echo params.DATE
                 script {
                     def valid_deadline = (params.DATE ==~ "[0-9]{2}-[0-9]{2}-[0-9]{4}")
+                    echo String.valueOf(valid_deadline)
                 }
-                echo String.valueOf(valid_deadline)
             }
         }
     }
