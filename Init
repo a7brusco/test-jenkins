@@ -12,7 +12,7 @@ pipeline {
                                     job: 'test',
                                     parameters: [
                                         string(name: 'ID', value: "${index}"),
-                                        ]
+                                    ]
                         }
                     }
                     parallel branches
@@ -22,7 +22,7 @@ pipeline {
         stage('wait files in NAS') {
             steps{
                 script {
-                    dir('//192.168.4.204/dna'){
+                    dir('/home/dna'){
                         def files = findFiles(glob: 'agent-*.*')
                         waitUntil { files.length == 2 }
                     }
