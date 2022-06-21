@@ -7,9 +7,9 @@ pipeline {
                     def branches = [:]
                     for(int i=0; i<2; i++){
                         def index = i+1
-                        branches["test${i}"] = {
+                        branches["generator${i}"] = {
                             build   propagate: false,
-                                    job: 'test',
+                                    job: 'generator',
                                     parameters: [
                                         string(name: 'ID', value: "${index}"),
                                         ]
@@ -17,6 +17,12 @@ pipeline {
                     }
                     parallel branches
                 }
+            }
+        }
+        stage('wait files in NAS') {
+            cd('//192.168.4.204/dna'){
+                def files = findFiles(glob: 'agent-*.*')
+                waitUntil { files.length == 2 }
             }
         }
     }
