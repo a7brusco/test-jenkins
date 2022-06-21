@@ -22,7 +22,7 @@ pipeline {
         stage('wait files in NAS') {
             steps{
                 script {
-                    dir('/home/dna'){
+                    dir('/home/dna/jenkins_tokens'){
                         waitUntil { findFiles(glob: '*.agent').length == 2 }
                     }
                 }
@@ -31,6 +31,9 @@ pipeline {
     }
     post {
         always {
+            dir('/home/dna'){
+                deleteDir 'jenkins_tokens'
+            }
             echo "FINISH"
         }
     }
