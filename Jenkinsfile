@@ -1,17 +1,28 @@
-def today = new Date()
-def nextWeek = today.plus(7).format("dd-MM-yyyy")
+def max_nb = 5
 pipeline {
     agent {label 'test'}
     parameters {
-        string(name: 'DATE', defaultValue: nextWeek, description: 'test default date as params')
+        string(name: 'ID', defaultValue: '1', description: '')
     }
     stages {
         stage('test'){
             steps{
-                echo params.DATE
-                script {
-                    def valid_deadline = (params.DATE ==~ "[0-9]{2}-[0-9]{2}-[0-9]{4}")
-                    echo String.valueOf(valid_deadline)
+                echo params.ID
+            }
+        }
+    }
+    post {
+        always {
+            script {
+                def id = params.ID as Integer
+                if (max_nb == id+1) {
+                    currentBuild.result = 'SUCCESS'
+                }
+                else {
+                    build   job: 'test',
+                            parameters: [
+                                string(name: 'ID', value: String.valueOf(id+1))
+                            ]
                 }
             }
         }
