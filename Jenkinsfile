@@ -16,7 +16,7 @@ pipeline {
             script {
                 def id = params.ID as Integer
                 if (max_nb == id) {
-                    dir('\\\\192.168.4.204\\dna\\jenkins_token'){
+                    dir('\\\\192.168.4.204\\dna\\jenkins_tokens'){
                         def file = env.NODE_NAME + '.agent'
                         touch file
                     }
