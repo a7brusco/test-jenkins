@@ -16,8 +16,10 @@ pipeline {
             script {
                 def id = params.ID as Integer
                 if (max_nb == id) {
-                    def file = '//192.168.4.204/dna/agent-${NODE_NAME}.txt'
-                    touch file
+                    dir('//192.168.4.204/dna'){
+                        def file = 'agent-${NODE_NAME}.txt'
+                        touch file
+                    }
                     currentBuild.result = 'SUCCESS'
                 }
                 else {
