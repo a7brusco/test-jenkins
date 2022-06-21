@@ -1,15 +1,16 @@
 pipeline {
     agent {label 'test'}
-    environment {
-        TEST = credentials('dna_user')
+    script{
+        def today = new Date()
+        def nextWeek = today.plus(7).format("dd-MM-yyyy")
+    }
+    parameters {
+        string(name: 'DATE', defaultValue: nextWeek, descritption: 'test default date as params')
     }
     stages {
-        stage('test') {
-            environment {
-                TEST = "${TEST_PSW}"
-            }
-            steps {
-                bat 'python setup.py'
+        stage('test'){
+            steps{
+                echo params.DATE
             }
         }
     }
