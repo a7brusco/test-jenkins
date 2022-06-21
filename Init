@@ -20,9 +20,11 @@ pipeline {
             }
         }
         stage('wait files in NAS') {
-            cd('//192.168.4.204/dna'){
-                def files = findFiles(glob: 'agent-*.*')
-                waitUntil { files.length == 2 }
+            steps{
+                dir('//192.168.4.204/dna'){
+                    def files = findFiles(glob: 'agent-*.*')
+                    waitUntil { files.length == 2 }
+                }
             }
         }
     }
