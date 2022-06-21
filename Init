@@ -31,8 +31,8 @@ pipeline {
     }
     post {
         always {
-            dir('/home/dna'){
-                deleteDir 'jenkins_tokens'
+            dir('/home/dna/jenkins_tokens'){
+                deleteDir()
             }
             echo "FINISH"
         }
