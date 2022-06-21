@@ -1,6 +1,6 @@
 def max_nb = 5
 pipeline {
-    agent {label 'test'}
+    agent {label 'runner'}
     parameters {
         string(name: 'ID', defaultValue: '1', description: '')
     }

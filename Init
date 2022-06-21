@@ -1,0 +1,27 @@
+pipeline {
+    agent {label: 'dispatcher'}
+    stages {
+        stage('test') {
+            steps {
+                script {
+                    def branches = [:]
+                    for(int i=0; i<2, i++){
+                        def index = i
+                        branches["test${i}"] = {
+                            build   propagate: false,
+                                    job: 'test',
+                                    parameters: [
+                                        string(name: 'ID', value: "${index}"),
+                                        ]
+                        }
+                    }
+                }
+            }
+        }
+    }
+    post {
+        always {
+            echo "FINISH"
+        }
+    }
+}
