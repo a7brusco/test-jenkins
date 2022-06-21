@@ -23,7 +23,7 @@ pipeline {
             steps{
                 script {
                     dir('/home/dna/jenkins_tokens'){
-                        waitUntil { findFiles(glob: '*.agent').length == 2 }
+                        waitUntil(quiet:true) { findFiles(glob: '*.agent').length == 2 }
                     }
                 }
             }
