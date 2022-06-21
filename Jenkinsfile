@@ -5,7 +5,7 @@ pipeline {
         def nextWeek = today.plus(7).format("dd-MM-yyyy")
     }
     parameters {
-        string(name: 'DATE', defaultValue: nextWeek, descritption: 'test default date as params')
+        string(name: 'DATE', defaultValue: nextWeek, description: 'test default date as params')
     }
     stages {
         stage('test'){
