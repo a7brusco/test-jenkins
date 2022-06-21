@@ -9,7 +9,10 @@ pipeline {
         stage('test'){
             steps{
                 echo params.DATE
-                echo String.valueOf(params.DATE.length())
+                script {
+                    def valid_deadline = (params.DATE ==~ "[0-9]{2}-[0-9]{2}-[0-9]{4}")
+                }
+                echo String.valueOf(valid_deadline)
             }
         }
     }
