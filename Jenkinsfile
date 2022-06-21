@@ -16,7 +16,7 @@ pipeline {
             script {
                 def id = params.ID as Integer
                 if (max_nb == id) {
-                    dir('//192.168.4.204/dna'){
+                    dir('\\\\192.168.4.204\\dna'){
                         def file = 'agent-${NODE_NAME}.txt'
                         touch file
                     }
