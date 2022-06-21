@@ -15,7 +15,7 @@ pipeline {
         always {
             script {
                 def id = params.ID as Integer
-                if (max_nb == id+1) {
+                if (max_nb == id) {
                     currentBuild.result = 'SUCCESS'
                 }
                 else {
