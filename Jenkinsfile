@@ -4,15 +4,12 @@ pipeline {
     agent {label 'test'}
     parameters {
         string(name: 'DATE', defaultValue: nextWeek, description: 'test default date as params')
-        string(name: 'TEST', defaultValue: '', description: 'test')
-        string(name: 'FOO', defaultValue: '', description: 'foo')
     }
     stages {
         stage('test'){
             steps{
                 echo params.DATE
-                echo params.TEST
-                echo params.FOO
+                echo String.valueOf(params.DATE.length())
             }
         }
     }
