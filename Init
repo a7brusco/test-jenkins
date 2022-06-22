@@ -1,5 +1,5 @@
 def randomString = {int length ->
-    String alphabet = (('A'..'Z')+('a'..'z')+('0'..'9')).join()
+    String alphabet = (('A'..'Z')+('a'..'z')+('0'..'9')).join('')
     def rnd = new Random()
     (1..length).collect { alphabet[ rnd.nextInt( alphabet.length() ) ] }.join('')
 }
