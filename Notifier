@@ -1,13 +1,19 @@
 pipeline {
     agent {label 'dispatcher'}
-    triggers {
-        cron('H/2 * * * *')
-    }
     stages {
         stage ('Test DB') {
             steps {
                 echo 'TEST'
+                sleep 10
             }
+        }
+    }
+    post {
+        always {
+            echo 'POST'
+        }
+        aborted {
+            echo 'ABORTED'
         }
     }
 }
