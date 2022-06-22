@@ -11,7 +11,7 @@ pipeline {
                             build   propagate: false,
                                     job: 'test',
                                     parameters: [
-                                        string(name: 'ID', value: "${index}"),
+                                        string(name: 'ID', value: "1"),
                                     ]
                         }
                     }
