@@ -18,7 +18,7 @@ pipeline {
                             build   propagate: false,
                                     job: 'test',
                                     parameters: [
-                                        string(name: 'ID', value: generator(10)),
+                                        string(name: 'ID', value: randomString(10)),
                                     ]
                         }
                     }
