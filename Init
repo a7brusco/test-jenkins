@@ -4,6 +4,8 @@ def randomString = {int length ->
     (1..length).collect { alphabet[ rnd.nextInt( alphabet.length() ) ] }.join('')
 }
 
+def indexUUID = UUID.randomUUID().toString()
+
 pipeline {
     agent {label 'dispatcher'}
     stages {
@@ -12,12 +14,12 @@ pipeline {
                 script {
                     def branches = [:]
                     for(int i=0; i<2; i++){
-                        def index = i+1
+                        
                         branches["test${i}"] = {
                             build   propagate: false,
                                     job: 'test',
                                     parameters: [
-                                        string(name: 'ID', value: randomString(10)),
+                                        string(name: 'ID', value: indexUUID),
                                     ]
                         }
                     }
