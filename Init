@@ -1,3 +1,10 @@
+def randomString = {int length ->
+    String alphabet = (('A'..'Z')+('a'..'z')+('0'..'9')).join()
+    new Random().with {
+        (1..length).collect { alphabet[ nextInt( alphabet.length())]}.join()
+    }
+}
+
 pipeline {
     agent {label 'dispatcher'}
     stages {
@@ -11,7 +18,7 @@ pipeline {
                             build   propagate: false,
                                     job: 'test',
                                     parameters: [
-                                        string(name: 'ID', value: "1"),
+                                        string(name: 'ID', value: generator(10)),
                                     ]
                         }
                     }
