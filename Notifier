@@ -10,8 +10,9 @@ pipeline {
     }
     post {
         always {
-            echo currentBuild.result
-            echo 'POST'
+            if (currentBuild.result != 'ABORTED') {
+                echo 'POST'
+            }
         }
     }
 }
