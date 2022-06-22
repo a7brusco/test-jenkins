@@ -1,0 +1,13 @@
+pipeline {
+    agent {label 'dispatcher'}
+    trigger {
+        cron('H/2 * * * *')
+    }
+    stages {
+        stage ('Test DB') {
+            steps {
+                echo 'TEST'
+            }
+        }
+    }
+}
