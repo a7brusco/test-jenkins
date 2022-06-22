@@ -1,0 +1,17 @@
+pipeline {
+    agent {label 'dispatcher'}
+    stages {
+        stage ('Test DB') {
+            steps {
+                echo 'TEST'
+                sleep 10
+            }
+        }
+    }
+    post {
+        always {
+            echo currentBuild.result
+            echo 'POST'
+        }
+    }
+}
