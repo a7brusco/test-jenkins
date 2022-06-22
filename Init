@@ -31,9 +31,7 @@ pipeline {
     }
     post {
         always {
-            dir('/home/dna'){
-                sh 'rm -rf jenkins_tokens'
-            }
+            sh 'python3 remove_nas_files.py'
             echo "FINISH"
         }
     }
