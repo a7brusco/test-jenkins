@@ -4,7 +4,7 @@ pipeline {
         stage ('Test') {
             steps {
                 script {
-                    for (Projet job : Hudson.getInstance().getProjects()) {
+                    for (Project job : Hudson.getInstance().getProjects()) {
                         if (job.isBuilding() || job.isInQueue()) {
                             echo "${job.getName()}"
                         }
