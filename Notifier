@@ -6,6 +6,7 @@ pipeline {
                 script {
                     waitUntil{
                         def job = Jenkins.instance.getItemByFullName('test')
+                        echo job.toString()
                         return (job.isBuilding() || job.isInQueue())
                     }
                 }
