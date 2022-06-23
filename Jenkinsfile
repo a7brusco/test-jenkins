@@ -8,6 +8,7 @@ pipeline {
         stage('test'){
             steps{
                 echo params.ID
+                sleep(60)
             }
         }
     }
