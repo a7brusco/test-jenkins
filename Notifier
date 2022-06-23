@@ -3,9 +3,11 @@ pipeline {
     stages {
         stage ('Test') {
             steps {
-                for (Projet job : Hudson.getInstance().getProjects()) {
-                    if (job.isBuilding() || job.isInQueue()) {
-                        echo "${job.getName()}"
+                script {
+                    for (Projet job : Hudson.getInstance().getProjects()) {
+                        if (job.isBuilding() || job.isInQueue()) {
+                            echo "${job.getName()}"
+                        }
                     }
                 }
             }
