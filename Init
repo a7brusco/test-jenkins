@@ -27,20 +27,20 @@ pipeline {
                 }
             }
         }
-        stage('wait files in NAS') {
-            steps{
-                script {
-                    dir('/home/dna/jenkins_tokens'){
-                        waitUntil(quiet:true) { findFiles(glob: '*.agent').length == 2 }
-                    }
-                }
-            }
-        }
+        // stage('wait files in NAS') {
+        //     steps{
+        //         script {
+        //             dir('/home/dna/jenkins_tokens'){
+        //                 waitUntil(quiet:true) { findFiles(glob: '*.agent').length == 2 }
+        //             }
+        //         }
+        //     }
+        // }
     }
-    post {
-        always {
-            sh 'python3 remove_nas_files.py'
-            echo "FINISH"
-        }
-    }
+    // post {
+    //     always {
+    //         sh 'python3 remove_nas_files.py'
+    //         echo "FINISH"
+    //     }
+    // }
 }
