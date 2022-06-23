@@ -4,7 +4,7 @@ pipeline {
         stage ('Test') {
             steps {
                 script {
-                    def jobs = Jenkins.instance.getItemByFullName('job/test')
+                    def jobs = Jenkins.instance.getItemByFullName('test')
                     echo jobs.toString()
                 }
             }
