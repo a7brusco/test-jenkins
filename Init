@@ -17,6 +17,7 @@ pipeline {
                         
                         branches["test${i}"] = {
                             build   propagate: false,
+                                    wait: false,
                                     job: 'test',
                                     parameters: [
                                         string(name: 'ID', value: indexUUID),
