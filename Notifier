@@ -4,8 +4,10 @@ pipeline {
         stage ('Test') {
             steps {
                 script {
-                    def jobs = Jenkins.instance.getItemByFullName('test')
-                    echo jobs.toString()
+                    def job = Jenkins.instance.getItemByFullName('test')
+                    waitUntil{
+                        job.isBuilding() || job.isInQueue()
+                    }
                 }
             }
         }
