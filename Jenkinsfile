@@ -1,8 +1,8 @@
-def max_nb = 5
+def indexUUID = UUID.randomUUID().toString()
 pipeline {
     agent {label 'runner'}
     parameters {
-        string(name: 'ID', defaultValue: '1', description: '')
+        string(name: 'ID', defaultValue: indexUUID, description: '')
     }
     stages {
         stage('test'){
