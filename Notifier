@@ -4,9 +4,9 @@ pipeline {
         stage ('Test') {
             steps {
                 script {
-                    def job = Jenkins.instance.getItemByFullName('test')
                     waitUntil{
-                        job.isBuilding() || job.isInQueue()
+                        def job = Jenkins.instance.getItemByFullName('test')
+                        return (job.isBuilding() || job.isInQueue())
                     }
                 }
             }
