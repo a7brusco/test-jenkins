@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage ('test') {
             steps {
-               echo credential('dna_nni_user')
+               echo credentials('dna_nni_user')
             }
         }
     }
