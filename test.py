@@ -1,7 +1,7 @@
 import jenkins
 
 server = jenkins.Jenkins('http://192.168.4.208:8080/', username="dna_nni_user", password="7YxBfy3TSh4rqxrD5Im4")
-server.build_job('test')
+server.build_job('test', {'TEST':'test', 'FOO': 'foo'})
 
 # import os
 # import sys
