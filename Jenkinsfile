@@ -1,37 +1,10 @@
-def indexUUID = UUID.randomUUID().toString()
 pipeline {
-    agent {label 'runner'}
-    parameters {
-        string(name: 'ID', defaultValue: indexUUID, description: '')
-    }
+    agent {label 'dispatcher'}
     stages {
-        stage('test'){
-            steps{
-                echo params.ID
-                sleep(60)
+        stage ('test') {
+            steps {
+               echo credential('dna_nni_user')
             }
         }
     }
-    // post {
-    //     always {
-    //         script {
-    //             def id = params.ID as Integer
-    //             if (max_nb == id) {
-    //                 dir('\\\\192.168.4.204\\dna\\jenkins_tokens'){
-    //                     def file = env.NODE_NAME + '.agent'
-    //                     touch file
-    //                 }
-    //                 currentBuild.result = 'SUCCESS'
-    //             }
-    //             else {
-    //                 build   job: 'test',
-    //                         wait: false,
-    //                         propagate: false,
-    //                         parameters: [
-    //                             string(name: 'ID', value: '1')
-    //                         ]
-    //             }
-    //         }
-    //     }
-    // }
 }
