@@ -1,12 +1,12 @@
 pipeline {
     agent {label 'dispatcher'}
+    parameters {
+        string(name:"TEST")
+    }
     stages {
         stage ('test') {
-            environment {
-                TEST = credentials('dna_nni_user')
-            }
             steps {
-               echo TEST
+               echo params.TEST
             }
         }
     }
