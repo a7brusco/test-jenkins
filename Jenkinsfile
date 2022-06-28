@@ -3,6 +3,7 @@ pipeline {
     parameters {
         string(name:"TEST")
         string(name:"FOO")
+        choice(name:"test", choices:['test', 'test'])
     }
     stages {
         stage ('test') {
