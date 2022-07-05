@@ -1,3 +1,7 @@
+import hudson.node_monitors.*
+import hudson.slaves.*
+import java.util.concurrent.*
+
 def getEnviron(computer) {
    def env
    def thread = Thread.start("Getting env from ${computer.name}", { env = computer.environment })
