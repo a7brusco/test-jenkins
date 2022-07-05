@@ -8,8 +8,8 @@ pipeline {
                 for (agent in jenkins.getNodes()) {
                     def computer = agent.computer
                     echo "hello ${computer.name}"
+                    }
                 }
-               }
             }
         }
     }
