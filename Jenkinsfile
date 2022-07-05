@@ -10,9 +10,9 @@ pipeline {
                         def computer = agent.computer
                         echo "hello ${computer.name}"
                         if (computer.online){
-                            computer.setTemporarilyOffline(true, "automatic disconnection")
+                            computer.setTemporarilyOffline(true, OfflineCause())
                         } else {
-                            computer.setTemporarilyOffline(false, "automatic connection")
+                            computer.setTemporarilyOffline(false, OfflineCause())
                         }
                     }
                 }
