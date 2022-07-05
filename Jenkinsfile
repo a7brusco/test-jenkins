@@ -7,7 +7,7 @@ pipeline {
                     def jenkins = Jenkins.instance
                     for (agent in jenkins.getNodes()) {
                         def computer = agent.computer
-                        if (computer.offline) {
+                        if (computer.isTemporarilyOffline()) {
                             echo "hello ${computer.name}"
                         }
                     }
