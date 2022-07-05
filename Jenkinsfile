@@ -4,7 +4,7 @@ pipeline {
         stage ('test') {
             steps {
                script {
-                jenkins = Jenkins.instance
+                def jenkins = Jenkins.instance
                 for (agent in jenkins.getNodes()) {
                     def computer = agent.computer
                     echo "hello ${computer.name}"
