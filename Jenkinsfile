@@ -1,19 +1,3 @@
-import hudson.node_monitors.*
-import hudson.slaves.*
-import java.util.concurrent.*
-
-def getEnviron(computer) {
-   def env
-   def thread = Thread.start("Getting env from ${computer.name}", { env = computer.environment })
-   thread.join(2000)
-   if (thread.isAlive()) thread.interrupt()
-   env
-}
-
-def agentAccessible(computer) {
-    getEnviron(computer)?.get('PATH') != null
-}
-
 pipeline {
     agent {label 'dispatcher'}
     stages {
@@ -23,8 +7,7 @@ pipeline {
                     def jenkins = Jenkins.instance
                     for (agent in jenkins.getNodes()) {
                         def computer = agent.computer
-                        def isOK = (agentAccessible(computer) && !computer.offline)
-                        if (isOK) {
+                        if (computer.offline) {
                             echo "hello ${computer.name}"
                         }
                     }
