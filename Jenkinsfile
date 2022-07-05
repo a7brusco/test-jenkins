@@ -5,11 +5,10 @@ pipeline {
             steps {
                 script {
                     def jenkins = Jenkins.instance
-                    for (agent in jenkins.getNodes()) {
+                    def label = jenkins.getLabel("test")
+                    for (agent in label.getNodes()) {
                         def computer = agent.computer
-                        if (computer.isTemporarilyOffline()) {
-                            echo "hello ${computer.name}"
-                        }
+                        echo "hello ${computer.name}"
                     }
                 }
             }
