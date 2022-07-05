@@ -9,6 +9,11 @@ pipeline {
                     for (agent in label.getNodes()) {
                         def computer = agent.computer
                         echo "hello ${computer.name}"
+                        if (computer.online){
+                            computer.setTemporarilyOffline(true, "automatic disconnection")
+                        } else {
+                            computer.setTemporarilyOffline(false, "automatic connection")
+                        }
                     }
                 }
             }
