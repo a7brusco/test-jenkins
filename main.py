@@ -3,8 +3,6 @@ import sys
 
 import jenkins
 
-sys.path.append(os.path.join(os.path.dirname(__file__), "common", ""))
-
 from credentials import get_jenkins_credentials
 
 if __name__ == "__main__":
