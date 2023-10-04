@@ -1,0 +1,4 @@
+[submodule "TwoNotesEcosystemPyTools"]
+	path = TwoNotesEcosystemPyTools
+	url = https://github.com/orosysfr/TwoNotesEcosystemPyTools.git
+	branch = master

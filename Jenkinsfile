@@ -1,22 +1,28 @@
 pipeline {
-    agent {label 'dispatcher'}
+    agent any
+    parameters {
+        string(name: 'BRANCH', defaultValue: 'master', description: 'Branch of the experiments you want to launch')
+    }
     stages {
         stage ('test') {
-            steps {
-                script {
-                    def jenkins = Jenkins.instance
-                    def label = jenkins.getLabel("test")
-                    for (agent in label.getNodes()) {
-                        def computer = agent.computer
-                        echo "hello ${computer.name}"
-                        if (computer.online){
-                            computer.setTemporarilyOffline(true)
-                        } else {
-                            computer.setTemporarilyOffline(false)
-                        }
+            stage('Query submodules') {
+                steps {
+                    dir('TwoNotesEcosystemPyTools'){
+                        git branch: 'master', credentialsId: 'a7brusco_github_PAT', url: 'https://github.com/orosysfr/TwoNotesEcosystemPyTools'
                     }
                 }
             }
+            stage('start test job') {
+                steps {
+                    bat 'pip install python-jenkins'
+                    bat 'python main.py'
+                }
+            }
+        }
+    }
+    post {
+        cleanup {
+            deleteDir()
         }
     }
 }
