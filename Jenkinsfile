@@ -4,19 +4,17 @@ pipeline {
         string(name: 'BRANCH', defaultValue: 'master', description: 'Branch of the experiments you want to launch')
     }
     stages {
-        stage ('test') {
-            stage('Query submodules') {
-                steps {
-                    dir('TwoNotesEcosystemPyTools'){
-                        git branch: 'master', credentialsId: 'a7brusco_github_PAT', url: 'https://github.com/orosysfr/TwoNotesEcosystemPyTools'
-                    }
+        stage('Query submodules') {
+            steps {
+                dir('TwoNotesEcosystemPyTools'){
+                    git branch: 'master', credentialsId: 'a7brusco_github_PAT', url: 'https://github.com/orosysfr/TwoNotesEcosystemPyTools'
                 }
             }
-            stage('start test job') {
-                steps {
-                    bat 'pip install python-jenkins'
-                    bat 'python main.py'
-                }
+        }
+        stage('start test job') {
+            steps {
+                bat 'pip install python-jenkins'
+                bat 'python main.py'
             }
         }
     }
