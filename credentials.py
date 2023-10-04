@@ -1,7 +1,7 @@
 import os
 import sys
 
-sys.path.append(os.path.join(os.path.dirname(__file__), "..", "modules", "TwoNotesEcosystemPyTools", "src", "modules", ""))
+sys.path.append(os.path.join(os.path.dirname(__file__), "TwoNotesEcosystemPyTools", "src", "modules", ""))
 
 from auth.service import Service
 
